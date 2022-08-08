@@ -17,12 +17,12 @@ var c = function(a, b, c) {
   console.log(a); // 5 --> es 8 porque lo pasa por parametro.
   var f = function(a, b, c) {
     b = a;
-    console.log(b); // 5
+    console.log(b); // 8
     b = c; 
     var x = 5;
   }
-  f(a,b,c); // 8, 9, 
-  console.log(b); // 10
+  f(a,b,c);
+  console.log(b); // 9
 }
 c(8,9,10);
 console.log(b); // 10
@@ -32,7 +32,7 @@ console.log(x); // 1
 ```javascript
 console.log(bar); // undefined
 console.log(baz); // baz is not defined 
-foo();  // Se corta la ejecucion por error anterior, si se ejecutaria, daria: "Hola!"
+foo();  // Se corta la ejecucion por error anterior. Si se ejecutaria, daria: "Hola!"
 function foo() { console.log('Hola!'); }
 var bar = 1;
 baz = 2;
@@ -44,6 +44,9 @@ if(true) {
     var instructor = "Franco";
 }
 console.log(instructor); // Franco
+// LOS CONDICIONALES O BUCLES, NO ABREN NUEVOS CONTEXTOS DE EJECUCCION
+// VARIABLES CON VAR, OBJETOS, CLASES Y FUNCIONES SI ABREN NUEVOS CONTEXTOS DE EJECCUCION.
+// VARIABLES CONST Y LET, NO ABREN NUEVOS CONTEXTOS DE EJECCUCION.
 ```
 
 ```javascript
@@ -56,6 +59,7 @@ console.log(instructor); // Tony
    }
 })();
 console.log(instructor); // Tony
+//FUNCION AUTOINVOCADA, FINALIZA CON ()
 ```
 
 ```javascript
@@ -153,7 +157,7 @@ console.log(obj.prop.getFullname()); // "Aurelio De Rosa"
 
 var test = obj.prop.getFullname;
 
-console.log(test()); // "Juan Perez" --> Porque devuelve el var que esta en el contexto global.
+console.log(test()); // undefined, porque no hay ninguna propiedad en el contexto global.
 ```
 
 ### Event loop
