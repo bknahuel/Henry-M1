@@ -15,10 +15,25 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+  if(n > -1 && n < 2) return 1;
+  else if (n < 0) return 'No existe factorial';
+  return n * nFactorial(n - 1);
 }
 
 function nFibonacci(n) {
+  if(n < 2) return n;
+  return nFibonacci(n - 2) + nFibonacci(n - 1);
 }
+
+// SIN RECURSIVIDAD Y MAS OPTIMIZADO
+// const fibonacci = n => {
+//   const fib = [0, 1]
+
+//   for (let i = 2; i >= n; i++){
+//     fib[i] = fib[i - 2] + fib[i - 1]
+//   }
+//   return fib[n]
+// }
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -30,8 +45,39 @@ Pueden utilizar class o función constructora.
 */
 
 function Queue() {
-
+  this.arr = [];
+  this.enqueue = function (data){
+    this.arr.push(data);
+  }
+  Queue.prototype.dequeue = function(){
+    return this.arr.shift();
+  } 
+  Queue.prototype.size = function(){
+    return this.arr.length;
+  }
 }
+
+// EXAMPLE WITH CLASSES
+/*
+class Queue{
+  constructor(){
+    this.arr = [];
+  }
+  size(){
+    return this.arr.lenght;
+  }
+  
+}
+Queue.prototype.enqueue = function (data){
+    return this.arr.push (data);
+  }
+  Queue.prototype.dequeue = function (){
+    return this.arr.shift();
+  }
+
+var que2 = new Queue(); // Se ejecuta la funcion y se crea nueva queue
+que2.enqueue = function (){}
+*/
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
